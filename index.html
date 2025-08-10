@@ -298,11 +298,102 @@ footer {
 </head>
 <body>
 
-<header>
-  <img src="tld.png" alt="Logo">
-  <h1>The Diamonds League</h1>
+<header style="position: relative; padding: 20px; background: var(--color-bg-dark); text-align: center;">
+  
+  <!-- Logo de Discord arriba a la derecha -->
+  <a href="https://discord.gg/kA76hjs7we" target="_blank" style="
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+  " onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+    <img src="https://static.vecteezy.com/system/resources/previews/023/741/066/non_2x/discord-logo-icon-social-media-icon-free-png.png" 
+         alt="Discord" style="width: 50px; height: 50px;">
+  </a>
+
+  <!-- Logo de la liga centrado -->
+  <img src="tld.png" alt="The Diamonds League" style="width: 120px; height: auto; display: block; margin: 0 auto;">
+  
+  <h1 style="margin-top: 10px;">The Diamonds League</h1>
   <p>T1</p>
 </header>
+
+<!-- Popup -->
+<div id="popup-bot" style="
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+">
+  <div style="
+    background: var(--color-info-bg);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px var(--color-neon);
+    max-width: 300px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  " id="popup-content">
+    <img src="dev.png" alt="Bot" style="
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      box-shadow: 0 0 10px var(--color-neon);
+    ">
+    <h2 style="color: var(--color-neon); font-family: 'Orbitron', sans-serif;">Vinculando a HaxDev 🐢</h2>
+    <p style="color: var(--color-acento); margin-top: 8px;">Preparando conexión...</p>
+    <button onclick="cerrarPopup()" style="
+      margin-top: 15px;
+      background: var(--color-neon);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: var(--color-bg-dark);
+      cursor: pointer;
+    ">Cerrar</button>
+  </div>
+</div>
+
+<script>
+function mostrarPopup() {
+  const popup = document.getElementById('popup-bot');
+  const content = document.getElementById('popup-content');
+  popup.style.pointerEvents = 'auto';
+  popup.style.opacity = '1';
+  setTimeout(() => {
+    content.style.opacity = '1';
+    content.style.transform = 'scale(1)';
+  }, 50);
+}
+
+function cerrarPopup() {
+  const popup = document.getElementById('popup-bot');
+  const content = document.getElementById('popup-content');
+  content.style.opacity = '0';
+  content.style.transform = 'scale(0.8)';
+  setTimeout(() => {
+    popup.style.opacity = '0';
+    popup.style.pointerEvents = 'none';
+  }, 400);
+}
+
+window.addEventListener('load', () => {
+  mostrarPopup();
+  setTimeout(cerrarPopup, 3000);
+});
+</script>
+
 
 <nav>
    <button onclick="mostrarSeccion('noticias', this)" class="active">Noticias</button>
@@ -326,7 +417,7 @@ footer {
   <section id="patrocinadores" class="content-section">
   <h2>Patrocinadores</h2>
   <ul class="lista-patrocinadores">
-    <li>Eden Shop</li>
+    <li>Eden SHop</li>
     <li>HaxDev</li>
     <li>Aelous Rewards</li>
     <li>Club Tomateros Culiacan</li>
@@ -356,7 +447,7 @@ footer {
     <ul>
       <li>The Diamonds League abre sus puertas al mundo de HAxball poniendo su primera sala publica para todos, ademas de lanzar su pagina web. Todo esto gracias al patrocinio de HaxDev.</li>
       <li>The Diamonds League se afilia con la liga Win Sports</li>
-      <li>The Diamonds League cuenta con un torneo "mundialito 2v2" esto a causado intriga y actividad en la liga generando un gran apoyo a esta</li>
+      <li>The Diamonds League cuenta con un torneo "mundialito 2v2" esto a causado intriga y actividad en la liga generando un gran paoyo a esta</li>
       <li>Se ha visto reciente actividad en las redes sociales de The Diamonds League ¿estaran intentando activarlas?</li>
     </ul>
   </section>
